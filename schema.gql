@@ -1,0 +1,65 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type House {
+  """ID"""
+  id: ID!
+
+  """House name"""
+  name: String!
+
+  """Heros relations"""
+  heros: [Hero!]
+}
+
+type Hero {
+  id: ID!
+  name: String!
+  houseId: Int!
+  house: House!
+  description: String
+  img: String
+}
+
+type Query {
+  heros: [Hero!]!
+  hero(id: Int!): Hero!
+  houses: [House!]!
+  house(id: Int!): House!
+}
+
+type Mutation {
+  createHero(createHero: CreateHeroInput!): Hero!
+  updateHero(updateHeroInput: UpdateHeroInput!): Hero!
+  removeHero(id: Int!): Hero!
+  createHouse(createHouseInput: CreateHouseInput!): House!
+  updateHouse(updateHouseInput: UpdateHouseInput!): House!
+  removeHouse(id: Int!): House!
+}
+
+input CreateHeroInput {
+  name: String!
+  houseId: Int!
+  description: String!
+  img: String!
+}
+
+input UpdateHeroInput {
+  name: String
+  houseId: Int
+  description: String
+  img: String
+  id: Int!
+}
+
+input CreateHouseInput {
+  """Name"""
+  name: String!
+}
+
+input UpdateHouseInput {
+  """Name"""
+  name: String
+  id: Int!
+}
